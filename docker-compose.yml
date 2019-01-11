@@ -1,0 +1,26 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./:/var/www/html/
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      # - "1215:1215"
+      - "8080:1215"
+      - "8000:8000"
+    links:
+      - "php-swoole:php-swoole"
+      - "php-laravel:php-laravel"
+
+  php-swoole:
+    build: .
+    command: ["/var/www/html/artisan", "swoole:http", "start"]
+    volumes:
+      - ./:/var/www/html/
+
+  php-laravel:
+    build: .
+    command: ["/var/www/html/artisan", "serve", "--host=0.0.0.0"]
+    volumes:
+      - ./:/var/www/html/
