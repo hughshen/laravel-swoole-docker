@@ -11,6 +11,6 @@ docker run --rm --interactive --tty \
 docker-compose up -d
 ```
 
-`Laravel serve`: `http://http://localhost:8000/hello`.
+`Laravel serve` => `http://localhost:8000/hello`
 
-`Laravel swoole`: `http://http://localhost:8080/hello`.
+`Laravel swoole` => `http://localhost:8080/hello`
